@@ -1,0 +1,48 @@
+<!-- <app-register-form></app-register-form> -->
+<!-- <app-login-form></app-login-form> -->
+<style>
+    ul{
+        list-style-type: none;
+        margin-left: 25%;
+        margin-top: 5px;
+        
+        padding: 0;
+        overflow: hidden;
+        /* background-color: #3a9096; */
+        
+    }
+li{
+    float: left;
+}
+li a{
+    display: block;
+    color:cadetblue;
+    text-align:center ;
+    padding: 16px;
+    text-decoration:none ;
+    
+}
+
+li a :hover{
+    background-color: #111111;
+}
+</style>
+
+<div class="navbar navbar-default bg-light" > 
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">Flight Booking</a>
+        </div>
+    <ul >
+    <li  role="presentation" routerLinkActive="active" >
+        <a routerLink="/register">Register</a>
+    </li>
+    <li role="presentation" routerLinkActive="active" >
+        <a routerLink="/Login">Login</a>
+    </li>
+    
+    
+    </ul>
+    </div>
+</div>
+<router-outlet></router-outlet>

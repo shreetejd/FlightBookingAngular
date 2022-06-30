@@ -1,0 +1,175 @@
+<!-- <style>
+    ul{
+        list-style-type: none;
+        margin-left: 25%;
+        margin-top: 5px;
+        
+        padding: 0;
+        overflow: hidden;
+        /* background-color: #3a9096; */
+        
+    }
+li{
+    float: left;
+}
+li a{
+    display: block;
+    color:cadetblue;
+    text-align:center ;
+    padding: 16px;
+    text-decoration:none ;
+    
+}
+
+li a :hover{
+    background-color: #111111;
+}
+</style>
+
+<div class="navbar navbar-default bg-light" > 
+    <div class="container-fluid" style="display: inline;">
+        
+        <ul><li *ngIf="isAdmin==false"  role="presentation" routerLinkActive="active" >
+            <a routerLink="/searchFlight">Search Flight</a>
+        </li>
+        <li *ngIf="isAdmin==false"  role="presentation" routerLinkActive="active" >
+            <a routerLink="/bookingHistory"> Booking History</a>
+        </li>
+        <li *ngIf="isAdmin==false"  role="presentation" routerLinkActive="active" >
+            <a routerLink="/myBookings"> My Bookings</a>
+        </li>
+        <li *ngIf="isAdmin==false"  role="presentation" routerLinkActive="active" >
+            <a routerLink="" (click)="onLogout()"> Log Out</a>
+        </li>
+        </ul>
+    </div>
+</div> -->
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Update Flight Details</h5>
+    <button    type="button"    class="btn-close"    aria-label="Close"    (click)="close()"  ></button>
+  </div>
+  <div class="modal-body"><div class="d-flex justify-content-center">
+    <div class="card m-3">
+           
+            <div class="card-body">
+  
+                <form  [formGroup]="BookForm" (ngSubmit)="onSubmit()">
+                    <div class="form-row">
+                        <div class="form-group col-5">
+                            <label>Name</label>
+                            <input type="text" formControlName="Name" class="form-control"  id="Name" value="{{this.dataval['Name']}}"  />
+                       
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Email</label>
+                            <input type="text" formControlName="Email" class="form-control"  id="Email" value="{{this.dataval['Email']}}"/>
+                           
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-5">
+                        <label>TotalSeats</label>
+                        <!-- <input type="number" formControlName="TotalSeat" class="form-control" id="TotalSeat" value="{{this.dataval['TotalSeat']}}"/>                   -->
+                        <select formControlName="TotalSeat" class="form-control" id="TotalSeat" (change)="onChange($event)">
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                        <div class="form-group col-5">
+                            <label>BookType</label>
+                            <input type="text" formControlName="BookType" value="{{this.dataval['BookType']}}" class="form-control"  id="BookType"/>
+                        </div>
+                    </div>
+                    <div class="form-row" *ngIf="PassCount>0">
+                
+                        <div class="form-group col-5">
+                        <label>Passenger Name</label>
+                        <input type="text" formControlName="PassingerName" class="form-control"  id="PassingerName" value="{{this.dataval['PassingerName']}}"/>
+                       </div>
+                       <div class="form-group col-5">
+                        <label>Age</label>
+                        <input type="number" formControlName="Age" value="{{this.dataval['Age']}}" class="form-control"  id="Age"/>
+                        </div>
+                    
+
+                        <!-- <form  [formGroup]="PassengerForm" >
+                                <table class="table table-bordered" formArrayName="Passengers">
+                                    <tr>
+                                       <th >Enter Passengers Details:</th> 
+                                       <th ><button type="button" (click)="addPassengers()" class="btn btn-primary">Add more</button></th> 
+
+                                    </tr >
+                                    <tr *ngFor="let Passenger of Passengers().controls; let i=index" [formGroupName]="i">
+                                        <td> Name: </td>
+                                        <input type="text" formControlName="PassingerName" class="form-control"  id="PassingerName" />
+                                        <td> Age: </td>
+                                        <input type="number" formControlName="Age" class="form-control"  id="Age" />
+                                       <td>
+                                            <button (click)="removePassengers(i)" class="btn btn-danger"></button>
+                                        </td>
+                                    </tr>
+                                </table>
+                        </form> -->
+                       
+                    </div>
+                    <div class="form-row" *ngIf="PassCount>=2">
+                
+                        <div class="form-group col-5">
+                        <label>Passenger Name</label>
+                        <input type="text" formControlName="PassingerName2" class="form-control"  id="PassingerName" value="{{this.dataval['PassingerName']}}"/>
+                       </div>
+                       <div class="form-group col-5">
+                        <label>Age</label>
+                        <input type="number" formControlName="Age2" value="{{this.dataval['Age']}}" class="form-control"  id="Age"/>
+                        </div>
+                    </div>
+                    <div class="form-row" *ngIf="PassCount>=3">
+                
+                        <div class="form-group col-5">
+                        <label>Passenger Name</label>
+                        <input type="text" formControlName="PassingerName3" class="form-control"  id="PassingerName" value="{{this.dataval['PassingerName']}}"/>
+                       </div>
+                       <div class="form-group col-5">
+                        <label>Age</label>
+                        <input type="number" formControlName="Age3" value="{{this.dataval['Age']}}" class="form-control"  id="Age"/>
+                        </div>
+                    </div>
+                    <div class="form-row" >
+                        <div class="form-group col-5">
+                        <label>MealType</label>
+                        <input type="text" formControlName="MealType" value="{{this.dataval['MealType']}}" class="form-control"  id="MealType"/>
+                        </div>
+                    
+                    
+                        <div class="form-group col-5">
+                            <label>SeatNumbers</label>
+                            <input type="text" formControlName="SeatNumber" value="{{this.dataval['SeatNumber']}}" class="form-control" id="SeatNumber" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-5">
+                            <label>Coupen</label>
+                            <input type="text" formControlName="Coupen"  (keyup)="onKeyUpEvent($event)" class="form-control"  id="Coupen"/>
+                            </div> 
+                    
+                        <div class="form-group col-5">
+                            <label>Cost</label>
+                            <input type="number" formControlName="Cost"  class="form-control"  id="Cost"/>
+                            </div> 
+                    </div>
+                   
+                    <div class="text-center">
+                        <button  type="submit" class="btn btn-primary mr-1">Book Ticket</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div></div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+      Close
+    </button>
+    </div>

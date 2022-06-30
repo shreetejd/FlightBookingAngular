@@ -1,0 +1,102 @@
+
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Update Flight Details</h5>
+  <button    type="button"    class="btn-close"    aria-label="Close"    (click)="close()"  ></button>
+</div>
+<div class="modal-body"><div class="d-flex justify-content-center">
+  <div class="card m-3">
+         
+          <div class="card-body">
+
+              <form  [formGroup]="FLightForm" (ngSubmit)="onSubmit()">
+                  <div class="form-row">
+                      <div class="form-group col-5">
+                          <label>Flight Number</label>
+                          <input type="number" formControlName="FlightNumber" class="form-control"  id="FlightNumber" value="{{this.dataval['FlightNumber']}}"  />
+                     
+                      </div>
+                      <div class="form-group col-5">
+                          <label>Airline</label>
+                          <input type="text" formControlName="Airline" class="form-control"  id="Airline" value="{{this.dataval['Airline']}}"/>
+                         
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      
+                      <div class="form-group col-5">
+                      <label>From</label>
+                      <input type="text" formControlName="FromPlace" class="form-control" id="FromPlace" value="{{this.dataval['FromPlace']}}"/>                  
+                      </div>
+
+              
+                      <div class="form-group col-5">
+                      <label>To</label>
+                      <input type="text" formControlName="ToPlace" class="form-control"  id="ToPlace" value="{{this.dataval['ToPlace']}}"/>
+                     
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-5">
+                      <label>Start Time</label>
+                      <input type="datetime-local" formControlName="StartTime" value="{{this.dataval['StartTime']}}" class="form-control"  id="StartTime"/>
+                      </div>
+                  
+                  
+                      <div class="form-group col-5">
+                          <label>End Time</label>
+                          <input type="datetime-local" formControlName="EndTime" value="{{this.dataval['EndTime']}}" class="form-control" id="EndTime" />
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-5">
+                      <label>Days</label>
+                      <input type="text" formControlName="Days" value="{{this.dataval['Days']}}" class="form-control"  id="Days"/>
+                      </div>
+                  
+                  
+                      <div class="form-group col-5">
+                          <label>Instruments</label>
+                          <input type="text" formControlName="Instruments" value="{{this.dataval['Instruments']}}" class="form-control" id="Instruments" />
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-5">
+                      <label>Business Class Seats</label>
+                      <input type="number" formControlName="BusinessSeatCount" value="{{this.dataval['BusinessSeatCount']}}" class="form-control"  id="BusinessSeatCount"/>
+                      </div>
+                  
+                  
+                      <div class="form-group col-5">
+                          <label>Non Business Class Seats</label>
+                          <input type="number" formControlName="NonBusinessSeatCount" value="{{this.dataval['NonBusinessSeatCount']}}" class="form-control" id="NonBusinessSeatCount" />
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-5">
+                      <label>Cost</label>
+                      <input type="number" formControlName="Cost" value="{{this.dataval['Cost']}}" class="form-control"  id="Cost"/>
+                      </div>
+                  
+                  
+                      <div class="form-group col-5">
+                          <label>Meal Type</label>
+                          <input type="text" formControlName="Meal" value="{{this.dataval['Meal']}}" class="form-control" id="Meal" />
+                      </div>
+                  </div>
+
+                  <div class="form-group form-check">
+                      <input type="checkbox" formControlName="IsBlocked" id="IsBlocked" value="{{this.dataval['IsBlocked']}}" class="form-check-input" />
+                      <label for="IsBlocked" class="form-check-label">IsBlocked?</label>
+                  </div>
+                  <div class="text-center">
+                      <button  type="submit" class="btn btn-primary mr-1">Add Flight</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div></div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+    Close
+  </button>
+  </div>
